@@ -1,7 +1,7 @@
 import React from 'react';
 import {TextInput, Text} from 'react-native';
 import styles from './styles';
-import {color} from '../../utility';
+import {color} from '../../utility/colors/index';
 
 export default ({
   placeholder,

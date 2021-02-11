@@ -1,8 +1,10 @@
 /**
  * Global App Styles
  */
-import * as color from '../colors';
+
+// testing
 import {StyleSheet} from 'react-native';
+import { color } from '../..';
 
 /* Styles ==================================================================== */
 export default StyleSheet.create({

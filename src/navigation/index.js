@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import {Login, SignUp, Dashboard} from '../container'
+import {Login, SignUp, Dashboard, Splash} from '../container'
 import { color } from '../utility/colors'
 
 
@@ -23,6 +23,10 @@ function NavContainer(){
             },
           }}>
           <Stack.Screen
+            name="Splash"
+            component={Splash}
+          />
+          <Stack.Screen
             name="Login"
             component={Login}
             options={{headerShown: false}}
@@ -32,9 +36,13 @@ function NavContainer(){
             component={SignUp}
             options={{headerShown: false}}
           />
-          <Stack.Screen name="Dashboard" component={Dashboard} options={{
-            headerLeft: null,
-          }} />
+          <Stack.Screen
+            name="Dashboard"
+            component={Dashboard}
+            options={{
+              headerLeft: null,
+            }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     );

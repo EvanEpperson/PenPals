@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-
+  Platform,
   TextInput,
   View,
 
@@ -44,15 +44,19 @@ const SignUp = ({navigation}) => {
     } else if (password !== confirmPassword) {
       alert('Passwords Do not match');
     } {
-      SignUpRequest(email, password).then(() =>{
-        console.log()
+      SignUpRequest(email, password)
+      .then((res) =>{
+        if(!res.additionalUserInfo){
+          alert(res);
+          return
+        }
         let uid = firebase.auth().currentUser.uid
         let profileImg = '';
         AddUser(name, email, uid, profileImg)
           .then(() => {
             setAsyncStorage(keys.uuid,uid);
             setUniqueValue(uid);
-            navigation.navigate('Dashboard')
+            navigation.replace('Dashboard')
           })
           .catch(err => alert(err));
       }).catch((err)=>{
@@ -69,45 +73,50 @@ const SignUp = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={[globalStyle.flex1, {backgroundColor: 'white'}]}>
-      <View style={[globalStyle.containerCentered]}>
-        <Text style={{color: 'black'}}>Sign up screen</Text>
-      </View>
-      <View style={[globalStyle.flex2, globalStyle.sectionCentered]}>
-        <Input
-          placeholder="Enter Name"
-          value={name}
-          onChangeText={text => handleOnChange('name', text)}
-        />
-        <Input
-          placeholder="email"
-          value={email}
-          onChangeText={text => handleOnChange('email', text)}
-        />
-        <Input
-          placeholder="Enter password"
-          secureTextEntry={true}
-          value={password}
-          onChangeText={text => handleOnChange('password', text)}
-        />
-        <Input
-          placeholder="Confirm password"
-          secureTextEntry={true}
-          value={confirmPassword}
-          onChangeText={text => handleOnChange('confirmPassword', text)}
-        />
-        <Button title="Login" onPress={() => onLoginPress()} />
-        <Text
-          style={{
-            fontSize: 20,
-            fontWeight: 'bold',
-            color: color.LIGHT_GREEN,
-          }}
-          onPress={() => navigation.navigate('Login')}>
-          Login
-        </Text>
-      </View>
-    </SafeAreaView>
+    <KeyboardAvoidingView
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      keyboardVerticalOffset={50}>
+      <SafeAreaView style={[globalStyle.flex1, {backgroundColor: 'white'}]}>
+        <View style={[globalStyle.containerCentered]}>
+          <Text style={{color: 'black'}}>Sign up screen</Text>
+        </View>
+        <View style={[globalStyle.flex2, globalStyle.sectionCentered]}>
+          <Input
+            placeholder="Enter Name"
+            value={name}
+            onChangeText={text => handleOnChange('name', text)}
+          />
+          <Input
+            placeholder="email"
+            value={email}
+            onChangeText={text => handleOnChange('email', text)}
+          />
+          <Input
+            placeholder="Enter password"
+            secureTextEntry={true}
+            value={password}
+            onChangeText={text => handleOnChange('password', text)}
+          />
+          <Input
+            placeholder="Confirm password"
+            secureTextEntry={true}
+            value={confirmPassword}
+            onChangeText={text => handleOnChange('confirmPassword', text)}
+          />
+          <Button title="Login" onPress={() => onLoginPress()} />
+          <Text
+            style={{
+              fontSize: 20,
+              fontWeight: 'bold',
+              color: color.LIGHT_GREEN,
+            }}
+            onPress={() => navigation.navigate('Login')}>
+            Login
+          </Text>
+        </View>
+      </SafeAreaView>
+    </KeyboardAvoidingView>
   );
 };
 

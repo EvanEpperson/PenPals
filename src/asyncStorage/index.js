@@ -12,7 +12,7 @@ const setAsyncStorage = async(key,item)=> {
     }
 }
 
-const getßAsyncStorage = async (key) => {
+const getAsyncStorage = async (key) => {
   try {
     const value =  AsyncStorage.getItem(key);
     if(value){

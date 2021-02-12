@@ -2,20 +2,23 @@ import React, { useState } from 'react'
 import {
   SafeAreaView,
   StyleSheet,
-  Text,
   TextInput,
   View,
-  Button,
+  KeyboardAvoidingView,
+  StatusBar,
 } from 'react-native';
 import Logo from '../../component/Logo/index'
 import InputField from '../../component/index'
 import globalStyle from '../../utility/styleHelper/globalStyle';
 import { color } from '../..';
+import {Button, Input, Image, Text} from 'react-native-elements';
 
 
 
 
 const Login = ({navigation}) => {
+  // const globalState = useContext(Store)
+  // const {dispatchLoaderAction} = globalState
 
   const[credentials, setCredentials] = useState({
     email: '',
@@ -42,43 +45,69 @@ const Login = ({navigation}) => {
   }
 
     return (
-      <SafeAreaView style={[globalStyle.flex1, {backgroundColor: 'white'}]}>
-        <View style={[globalStyle.containerCentered]}>
-          <Text style={{color: 'black'}}>testing this out </Text>
-        </View>
-        <View style={[globalStyle.flex2, globalStyle.sectionCentered]}>
-          <TextInput
+      <KeyboardAvoidingView style={styles.container}>
+        {/* <View style={[globalStyle.containerCentered]}>
+          <Text style={{color: 'black'}}>Login Screen</Text>
+        </View> */}
+        <StatusBar style="auto" />
+        <Image
+          source={{
+            uri:
+              'https://techcrunch.com/wp-content/uploads/2018/12/getty-messaging.jpg',
+          }}
+          style={{
+            width: 200,
+            height: 200,
+            borderRadius: 20,
+          }}
+        />
+        <View style={styles.inputContainer}>
+          <Input
             placeholder="Enter Email"
             value={email}
+            autoFocus
             onChangeText={text => handleOnChange('email', text)}
           />
-          <TextInput
+          <Input
             placeholder="Enter password"
             secureTextEntry={true}
             value={password}
             onChangeText={text => handleOnChange('password', text)}
           />
-          <Button title="Login" onPress={()=>onLoginPress()} />
-          <Text
+          <Button
+            containerStyle={styles.button}
+            title="Login"
+            onPress={() => onLoginPress()}
+          />
+          <Button
             style={{
               fontSize: 20,
               fontWeight: 'bold',
               color: color.LIGHT_GREEN,
             }}
-            onPress={() => navigation.navigate('SignUp')}>
-            Sign Up{' '}
-          </Text>
+            style={styles.button}
+            onPress={() => navigation.navigate('SignUp')} title="Sign Up" />
+            
+
         </View>
-        <Text onPress={() => navigation.navigate('SignUp')}>Login</Text>
-      </SafeAreaView>
+      </KeyboardAvoidingView>
     );
 }
 
 export default Login
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'white',
-    }
-})
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+  },
+  inputContainer: {
+    width: 300,
+  },
+  button: {
+    width: 200,
+    marginTop: 10,
+  },
+});

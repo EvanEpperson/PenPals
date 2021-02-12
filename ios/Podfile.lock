@@ -233,8 +233,8 @@ PODS:
   - React-jsinspector (0.62.2)
   - react-native-image-picker (1.1.0):
     - React
-  - react-native-safe-area-context (3.1.9):
-    - React-Core
+  - react-native-safe-area-context (1.0.2):
+    - React
   - React-RCTActionSheet (0.62.2):
     - React-Core/RCTActionSheetHeaders (= 0.62.2)
   - React-RCTAnimation (0.62.2):
@@ -302,8 +302,6 @@ PODS:
     - React-Core
   - RNScreens (2.17.1):
     - React-Core
-  - RNVectorIcons (6.7.0):
-    - React
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -361,7 +359,6 @@ DEPENDENCIES:
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNScreens (from `../node_modules/react-native-screens`)
-  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -440,8 +437,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-gesture-handler"
   RNScreens:
     :path: "../node_modules/react-native-screens"
-  RNVectorIcons:
-    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -472,7 +467,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 1540d1c01bb493ae3124ed83351b1b6a155db7da
   React-jsinspector: 512e560d0e985d0e8c479a54a4e5c147a9c83493
   react-native-image-picker: 7a85cf7b0a53845f03ae52fb4592a2748ded069b
-  react-native-safe-area-context: b6e0e284002381d2ff29fa4fff42b4d8282e3c94
+  react-native-safe-area-context: 9d9640a9085014864052e38496fc1dfde0b93974
   React-RCTActionSheet: f41ea8a811aac770e0cc6e0ad6b270c644ea8b7c
   React-RCTAnimation: 49ab98b1c1ff4445148b72a3d61554138565bad0
   React-RCTBlob: a332773f0ebc413a0ce85942a55b064471587a71
@@ -487,10 +482,9 @@ SPEC CHECKSUMS:
   RNCMaskedView: 5a8ec07677aa885546a0d98da336457e2bea557f
   RNGestureHandler: 03f587ba19a7e2d9fe48fb9aa6e33ace5fd07dd5
   RNScreens: b6c9607e6fe47c1b6e2f1910d2acd46dd7ecea3a
-  RNVectorIcons: 368d6d8b8301224e5ffb6254191f4f8876c2be0d
   Yoga: 3ebccbdd559724312790e7742142d062476b698e
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: 4dd644872df28ed840f410eb129e85c61a734229
+PODFILE CHECKSUM: 48629f260dd8acc90169a43ccbff4848e7725edd
 
 COCOAPODS: 1.10.1

@@ -15,10 +15,10 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 import Nav from './src/navigation'
-import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+// import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
+// import Icon from 'react-native-vector-icons/MaterialIcons';
 
-Icon.loadFont();
+// Icon.loadFont();
 
 
 // const App = () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import {Image, View, Text} from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './styles';
-import {globalStyle, color} from '../../utility';
+import globalStyle from '../../utility/styleHelper/globalStyle';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 export default ({img, name, onImgTap, onEditImgTap}) => (

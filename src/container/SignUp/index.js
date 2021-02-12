@@ -5,6 +5,7 @@ import {
   Platform,
   TextInput,
   View,
+  KeyboardAvoidingView,
 
 } from 'react-native';
 import Logo from '../../component/Logo/index';

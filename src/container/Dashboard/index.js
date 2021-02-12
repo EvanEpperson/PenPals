@@ -3,6 +3,7 @@ import {SafeAreaView, Alert, Text, View, FlatList, StyleSheet} from 'react-nativ
 // import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 // import ImagePicker from 'react-native-image-picker';
 import ShowUsers from '../../component/showUsers';
+import Profile from '../../component/profile'
 import firebase from '../../firebase/config';
 // import {color} from '../../utility';
 // import {Store} from '../../context/store';
@@ -93,13 +94,13 @@ const Dashboard = ({navigation}) => {
             <FlatList 
                 alwaysBounceVertical={false}
                 data={allUsers}
-                // keyExtractor={(_,index)=>index.toString()}
-                // ListHeaderComponent={
-                //     <Profile 
-                //     // img={profileImg}
-                //     // name={}
-                //     />
-                // }
+                keyExtractor={(_,index)=>index.toString()}
+                ListHeaderComponent={
+                    <Profile 
+                    img={profileImg}
+                    name={name}
+                    />
+                }
                 renderItem={({item})=>(
                     <ShowUsers
                     name={item.name}

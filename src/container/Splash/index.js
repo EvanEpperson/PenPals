@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { getAsyncStorage, keys } from '../../asyncStorage'
 import { setUniqueValue } from '../../utility/constants'
@@ -26,10 +26,17 @@ const Splash = ({navigation}) => {
     }, [navigation])
 
     return (
-        <SafeAreaView>
-            <Text>Splash screen if i use it or not </Text>
-        </SafeAreaView>
-    )
+      <SafeAreaView>
+        <Image
+          source={require('../download.jpeg')}
+          style={{
+            width: 200,
+            height: 200,
+            borderRadius: 20,
+          }}
+        />
+      </SafeAreaView>
+    );
 }
 
 export default Splash

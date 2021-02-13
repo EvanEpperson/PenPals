@@ -6,13 +6,13 @@ import {
   TextInput,
   View,
   KeyboardAvoidingView,
-
+  Image
 } from 'react-native';
 import Logo from '../../component/Logo/index';
 import InputField from '../../component/index';
 import globalStyle from '../../utility/styleHelper/globalStyle';
 import {color} from '../..';
-import {Button, Image, Text, Input} from 'react-native-elements';
+import {Button, Text, Input} from 'react-native-elements';
 // import SignUpRequest from '../../network/signup';
 // import AddUser from '../../network/user'
 import {SignUpRequest, AddUser} from '../../network'
@@ -23,9 +23,6 @@ import { setUniqueValue } from '../../utility/constants';
 
 
 const SignUp = ({navigation}) => {
-    // const globalState = useContext(Store);
-    // const {dispatchLoaderAction} = globalState;
-
   const [credentials, setCredentials] = useState({
     name: '',
     email: '',
@@ -34,35 +31,42 @@ const SignUp = ({navigation}) => {
   });
 
   const {name, email, password, confirmPassword} = credentials;
-
-  onLoginPress = () => {
+    const setInitialState = () => {
+      setCredential({email: '', password: '', confirmPassword: ''});
+    };
+    
+  const onLoginPress = () => {
+    
     if (!name) {
-      alert('Your Name is required');
+      alert('Name is required');
     } else if (!email) {
-      alert('email is required');
+      alert('Email is required');
     } else if (!password) {
-      alert('password is required');
+      alert('Password is required');
     } else if (password !== confirmPassword) {
-      alert('Passwords Do not match');
-    } {
+      alert('Password did not match');
+    } else {
+
       SignUpRequest(email, password)
-      .then((res) =>{
-        if(!res.additionalUserInfo){
-          alert(res);
-          return
-        }
-        let uid = firebase.auth().currentUser.uid
-        let profileImg = '';
-        AddUser(name, email, uid, profileImg)
-          .then(() => {
-            setAsyncStorage(keys.uuid,uid);
-            setUniqueValue(uid);
-            navigation.replace('Dashboard')
-          })
-          .catch(err => alert(err));
-      }).catch((err)=>{
-      console.log(firebase.auth().currentUser);
-      alert(err)})
+        .then((res) => {
+          if (!res.additionalUserInfo) {
+            alert(res);
+            return;
+          }
+          let uid = firebase.auth().currentUser.uid;
+          let profileImg = '';
+          AddUser(name, email, uid, profileImg)
+            .then(() => {
+              setAsyncStorage(keys.uuid, uid);
+              setUniqueValue(uid);
+              navigation.replace('Dashboard');
+            })
+            .catch(err => alert(err));
+        })
+        .catch(err => {
+          console.log(firebase.auth().currentUser);
+          alert(err);
+        });
     }
   };
 
@@ -81,6 +85,17 @@ const SignUp = ({navigation}) => {
       <SafeAreaView style={[globalStyle.flex1, {backgroundColor: 'white'}]}>
         <View style={[globalStyle.containerCentered]}>
           <Text style={{color: 'black'}}>Sign up screen</Text>
+          <Image
+            source={{
+              uri:
+                'https://techcrunch.com/wp-content/uploads/2018/12/getty-messaging.jpg',
+            }}
+            style={{
+              width: 200,
+              height: 200,
+              borderRadius: 20,
+            }}
+          />
         </View>
         <View style={[globalStyle.flex2, globalStyle.sectionCentered]}>
           <Input

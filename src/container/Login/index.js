@@ -1,19 +1,12 @@
 import React, { useState } from 'react'
 import {
-  SafeAreaView,
-  StyleSheet,
-  TextInput,
-  View,
-  KeyboardAvoidingView,
-  StatusBar,
-  Platform,
-  Keyboard,
+  ScrollView,SafeAreaView,StyleSheet,View,KeyboardAvoidingView,StatusBar,Platform,Image
 } from 'react-native';
-import Logo from '../../component/Logo/index'
-import InputField from '../../component/index'
-import globalStyle from '../../utility/styleHelper/globalStyle';
+// import Logo from '../../component/Logo/index'
+// import InputField from '../../component/index'
+// import globalStyle from '../../utility/styleHelper/globalStyle';
 import { color } from '../..';
-import {Button, Input, Image, Text} from 'react-native-elements';
+import {Button, Input, Text} from 'react-native-elements';
 import { LoginRequest } from '../../network';
 import { keys, setAsyncStorage } from '../../asyncStorage';
 import { setUniqueValue } from '../../utility/constants';
@@ -23,16 +16,22 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
 
 const Login = ({navigation}) => {
-  // const globalState = useContext(Store)
-  // const {dispatchLoaderAction} = globalState
-  // const [showLogo,toggleLogo] =useState(true)
-
   const[credentials, setCredentials] = useState({
     email: '',
     password: ''
   })
 
   const {email, password} = credentials
+    const setInitialState = () => {
+      setCredentials({email: '', password: ''});
+    };
+
+      const handleOnChange = (name, value) => {
+        setCredentials({
+          ...credentials,
+          [name]: value,
+        });
+      };
 
   onLoginPress = () => {
     if(!email){
@@ -48,6 +47,7 @@ const Login = ({navigation}) => {
         }
         setAsyncStorage(keys.uuid,res.user.uid)
         setUniqueValue(res.user.uid)
+        setInitialState()
         navigation.replace('Dashboard')
       })
       .catch((err)=>{
@@ -56,28 +56,24 @@ const Login = ({navigation}) => {
     }
   }
 
-  const handleOnChange = (name, value) => {
-    setCredentials({
-      ...credentials,
-      [name]: value,
-    })
-  }
+
 
     return (
-      <KeyboardAvoidingView
-        style={styles.container}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        keyboardVerticalOffset={50}>
-        {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
+      <ScrollView>
+        <KeyboardAvoidingView
+          style={styles.container}
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+          keyboardVerticalOffset={50}>
+          {/* <TouchableWithoutFeedback onPress={Keyboard.dismiss}> */}
           <SafeAreaView>
             {/* <View style={[globalStyle.containerCentered]}>
           <Text style={{color: 'black'}}>Login Screen</Text>
         </View> */}
-            <StatusBar style="auto" />
+            {/* <StatusBar style="white" /> */}
             <Image
               source={{
                 uri:
-                  "https://techcrunch.com/wp-content/uploads/2018/12/getty-messaging.jpg"
+                  'https://techcrunch.com/wp-content/uploads/2018/12/getty-messaging.jpg',
               }}
               style={{
                 width: 200,
@@ -114,9 +110,11 @@ const Login = ({navigation}) => {
                 title="Sign Up"
               />
             </View>
+            
           </SafeAreaView>
-        {/* </TouchableWithoutFeedback> */}
-      </KeyboardAvoidingView>
+          {/* </TouchableWithoutFeedback> */}
+        </KeyboardAvoidingView>
+      </ScrollView>
     );
 }
 

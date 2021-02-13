@@ -4,8 +4,9 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import styles from './styles';
 import globalStyle from '../../utility/styleHelper/globalStyle';
 import {TouchableOpacity} from 'react-native-gesture-handler';
+import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
 
-export default ({img, name, onImgTap, onEditImgTap}) => (
+const Profile = ({name, img, onImgTap, onEditImgTap}) => (
   <View style={[globalStyle.sectionCentered, styles.container]}>
     <View style={styles.imgContainer}>
       <TouchableOpacity onPress={onImgTap} activeOpacity={0.8}>
@@ -23,7 +24,7 @@ export default ({img, name, onImgTap, onEditImgTap}) => (
         )}
       </TouchableOpacity>
       <View style={[globalStyle.sectionCentered, styles.editImgContainer]}>
-        <FontAwesome5
+        <FontAwesome5Icon
           name="user-edit"
           size={20}
           onPress={onEditImgTap}
@@ -34,3 +35,5 @@ export default ({img, name, onImgTap, onEditImgTap}) => (
     <Text style={styles.welcome}>{name}</Text>
   </View>
 );
+
+export default Profile

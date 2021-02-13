@@ -11,8 +11,8 @@ export default ({
   onChangeText,
   value,
   onSubmitEditing,
-  onBlur,
-  onFocus,
+  // onBlur,
+  // onFocus,
   numberOfLines,
 }) => (
   <TextInput
@@ -26,7 +26,7 @@ export default ({
       placeholderTextColor ? placeholderTextColor : color.WHITE
     }
     onSubmitEditing={onSubmitEditing}
-    onBlur={onBlur}
-    onFocus={onFocus}
+    // onBlur={onBlur}
+    // onFocus={onFocus}
   />
 );

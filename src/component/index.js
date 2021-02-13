@@ -2,8 +2,8 @@
 import InputField from './input';
 import Logo from './Logo';
 // import Loader from './loader';
-// import Profile from './profile';
-// import ShowUsers from './showUsers';
+import Profile from './profile';
+import ShowUsers from './showUsers';
 // import StickyHeader from './stickyHeader';
 // import ChatBox from './chatBox';
 // import FieldInput from './fieldInput';
@@ -13,8 +13,8 @@ export {
   InputField,
   Logo,
 //   Loader,
-//   Profile,
-//   ShowUsers,
+  Profile,
+  ShowUsers,
 //   StickyHeader,
 //   ChatBox,
 //   FieldInput,

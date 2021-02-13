@@ -55,6 +55,7 @@
 		E0A5CA81D8EA4CA68280C23A /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CBE49C2DA5FA4F319C0976D6 /* FontAwesome.ttf */; };
 		E8C0C653B6E84EA5A24188E3 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EAECC7CF80AD4712A9C8F5EB /* FontAwesome.ttf */; };
 		FB62650A84FF4A13AF093FF5 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 13D3D08B15924713BD8409C1 /* Entypo.ttf */; };
+		19EFE2451BB44B39B21F5F96 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DE6F3925D90452FA4113497 /* Ionicons.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		FB883C0B70AD45FF936D9DAD /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/native-base/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		FD8B356B8F82000D650050B2 /* Pods-penPals.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-penPals.debug.xcconfig"; path = "Target Support Files/Pods-penPals/Pods-penPals.debug.xcconfig"; sourceTree = "<group>"; };
 		FEC648182E59411193AB4BF2 /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/native-base/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
+		9DE6F3925D90452FA4113497 /* Ionicons.ttf */ = {isa = PBXFileReference; name = "Ionicons.ttf"; path = "../node_modules/react-native-ionicons/fonts/Ionicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,6 +308,7 @@
 				7324697AD59E4A7BB0530E90 /* rubicon-icon-font.ttf */,
 				9BD38B7E3EED4F53BB9EC346 /* SimpleLineIcons.ttf */,
 				39497B211AC447E683586A3D /* Zocial.ttf */,
+				9DE6F3925D90452FA4113497 /* Ionicons.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 				3173EF7084404B1286BCF388 /* rubicon-icon-font.ttf in Resources */,
 				2E89FFF02B654F9A957ED8D5 /* SimpleLineIcons.ttf in Resources */,
 				2D9953E87C22444A80657EE5 /* Zocial.ttf in Resources */,
+				19EFE2451BB44B39B21F5F96 /* Ionicons.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

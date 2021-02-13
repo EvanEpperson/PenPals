@@ -9,10 +9,13 @@ import {clearAsyncStorage, clearAsynStorage} from '../../asyncStorage';
 import {UpdateUser, LogOutUser, LogoutUser} from '../../network';
 import globalStyle from '../../utility/styleHelper/globalStyle';
 import { uuid } from '../../utility/constants';
+import { deviceHeight, smallDeviceHeight } from '../../utility/styleHelper/appStyle';
+import { StickyHeader } from '../../component';
 
 
 
 const Dashboard = ({navigation}) => {
+  const [getScrollPosition, setScrollPosition] = useState(0)
     const [userDetail, setUserDetail] = useState({
       id: '',
       name: '',
@@ -149,25 +152,50 @@ const Dashboard = ({navigation}) => {
     // // console.log(allUsers[0].name);
     // console.log(name);
 
+    const getOpacity = () => {
+      if(deviceHeight > smallDeviceHeight){
+        return deviceHeight/4
+      }else{
+        return deviceHeight/6
+      }
+    }
+
     return (
       <SafeAreaView style={(globalStyle.flex1, {backgroundColor: 'white'})}>
+        {getScrollPosition > getOpacity() && (
+          <StickyHeader
+            name={name}
+            img={profileImg}
+            onImgTap={() => imgTaP(profileImg, name)}
+          />
+        )}
         <FlatList
           alwaysBounceVertical={false}
           data={allUsers}
           keyExtractor={(_, index) => index.toString()}
+          onScroll={event =>
+            setScrollPosition(event.nativeEvent.contentOffset.y)
+          }
           ListHeaderComponent={
-            <Profile
-              name={name}
-              img={profileImg}
-              onEditImgTap={() => selectPhotoTapped()}
-              onImgTap={() => imgTaP(profileImg, name)}
-            />
+            <View
+              style={{
+                opacity:
+                  getScrollPosition < getOpacity()
+                    ? (getOpacity() - getScrollPosition) / 100
+                    : 0,
+              }}>
+              <Profile
+                name={name}
+                img={profileImg}
+                onEditImgTap={() => selectPhotoTapped()}
+                onImgTap={() => imgTaP(profileImg, name)}
+              />
+            </View>
           }
           renderItem={({item}) => (
             <ShowUsers
               name={item.name}
               img={item.profileImg}
-              onNameTap={() => selectPhotoTapped()}
               onImgTap={() => imgTaP(item.profileImg, item.name)}
             />
           )}

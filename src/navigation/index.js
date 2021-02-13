@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {Login, SignUp, Dashboard, Splash} from '../container'
 import { color } from '../utility/colors'
 import ShowFullImg from '../container/ShowFullImg';
+import Chat from '../container/Chat';
 
 
 const Stack = createStackNavigator()
@@ -44,6 +45,13 @@ function NavContainer(){
           <Stack.Screen
             name="ShowFullImg"
             component={ShowFullImg}
+            options={{
+              headerBackTitle: null,
+            }}
+          />
+          <Stack.Screen
+            name="Chat"
+            component={Chat}
             options={{
               headerBackTitle: null,
             }}

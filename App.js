@@ -21,7 +21,13 @@ import Nav from './src/navigation'
 // Icon.loadFont();
 
 
-const App = () => <Nav />;
+// const App = () => <Nav />;
+
+export default () => {
+  return (
+      <Nav />
+  );
+};
 
 
 const styles = StyleSheet.create({
@@ -64,4 +70,4 @@ const styles = StyleSheet.create({
   // },
 });
 
-export default App;
+// export default App;

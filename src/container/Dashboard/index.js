@@ -151,6 +151,28 @@ const Dashboard = ({navigation}) => {
     // console.log(userDetail);
     // // console.log(allUsers[0].name);
     // console.log(name);
+    // name tap when you click the name and it goes to the new page 
+
+    const nameTap = (profileImg, name, guestUserId) => {
+      if(!profileImg){
+        navigation.navigate('Chat',{
+        name,
+        imgText: name.charAt(0),
+        guestUserId,
+        currentUserId : uuid
+      })
+      }else{
+        navigation.navigate('Chat',{
+        name,
+        img: profileImg,
+        guestUserId,
+        currentUserId : uuid
+      })
+    }
+  }
+
+
+    // opacity for scroll bar when you scroll up 
 
     const getOpacity = () => {
       if(deviceHeight > smallDeviceHeight){
@@ -197,6 +219,7 @@ const Dashboard = ({navigation}) => {
               name={item.name}
               img={item.profileImg}
               onImgTap={() => imgTaP(item.profileImg, item.name)}
+              onNameTap={() => nameTap(item.profileImg, item.name, item.id)}
             />
           )}
         />

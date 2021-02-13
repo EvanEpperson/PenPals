@@ -87,27 +87,34 @@ const Dashboard = ({navigation}) => {
       },
     };
 
-    ImagePicker.launchImageLibrary(option, (response) => {
-      if (response.didCancel) {
+    ImagePicker.showImagePicker(option,(response) => {
+      if  (response.didCancel) {
         console.log("user cancel image picker");
       } else if (response.error) {
         console.log("image picker error", response.error);
       } else {
         //base 64
-        let source = "data:image/jpeg;base64;" + response.data;
+        let source = 'data:image/jpeg;base64,'+response.data;
         console.log('response', JSON.stringify(response));
+        check(PERMISSIONS.IOS.LOCATION_ALWAYS);
         UpdateUser(uuid, source)
+        // check(PERMISSIONS.IOS.LOCATION_ALWAYS)
           .then(() => {
             setUserDetail({
               ...userDetail,
               profileImg: source,
             });
           })
-          .catch((err) => alert(err));
+          .catch(err => {
+            alert(err);
+          });
       }
     });
   };
   // console.log(userDetail);
+
+
+
 
     const logout = () => {
         LogoutUser()
@@ -120,6 +127,23 @@ const Dashboard = ({navigation}) => {
         .catch((err)=>alert(err))
     }
 
+
+    // * on image tap makes it so that you can see the image on full screen
+
+    const imgTaP = (profileImg, name) => {
+      if(!profileImg){
+        navigation.navigate('ShowFullImg', {
+          name,
+          imgText: name.charAt(0)
+        })
+      }
+      else{
+        navigation.navigate('ShowFullImg', {
+          name,
+          img: profileImg
+        });
+      }
+    }
 
     // console.log(userDetail);
     // // console.log(allUsers[0].name);
@@ -136,6 +160,7 @@ const Dashboard = ({navigation}) => {
               name={name}
               img={profileImg}
               onEditImgTap={() => selectPhotoTapped()}
+              onImgTap={() => imgTaP(profileImg, name)}
             />
           }
           renderItem={({item}) => (
@@ -143,6 +168,7 @@ const Dashboard = ({navigation}) => {
               name={item.name}
               img={item.profileImg}
               onNameTap={() => selectPhotoTapped()}
+              onImgTap={() => imgTaP(item.profileImg, item.name)}
             />
           )}
         />
